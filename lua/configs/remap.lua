@@ -14,6 +14,3 @@ vim.keymap.set("n", "<C-Down>", "<cmd>resize +2<cr>")
 vim.keymap.set("n", "<C-Left>", "<cmd>vertical resize -2<cr>")
 vim.keymap.set("n", "<C-Right>", "<cmd>vertical resize +2<cr>")
 
--- Clear highlight
-vim.keymap.set("n", "<leader>c", "<cmd>nohl<cr>")
-
