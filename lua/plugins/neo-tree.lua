@@ -7,5 +7,8 @@ return {
     "MunifTanjim/nui.nvim",
   },
   event = "VeryLazy",
+  keys = {
+    { "<leader>e", "<cmd>Neotree toggle<cr>", desc = "Toggle Neotree" },
+  },
 }
 
