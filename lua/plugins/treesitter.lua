@@ -2,7 +2,7 @@ return {
   "nvim-treesitter/nvim-treesitter",
   event = "VeryLazy",
   opts = {
-    ensure_installed = { "lua", "vim", "vimdoc", "query", "python", "go", "rust" },
+    ensure_installed = { "lua", "vim", "vimdoc", "query", "python", "go", "rust", "proto" },
     sync_install = false,
     auto_install = true,
     ignore_install = { "javascript" },
