@@ -13,6 +13,10 @@ return {
         noice = true,
         telescope = true,
         neogit = true,
+        indent_blankline = {
+          enabled = true,
+          colored_indent_levels = true,
+        },
       },
     }); 
     vim.cmd([[colorscheme catppuccin]])
