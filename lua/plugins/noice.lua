@@ -3,7 +3,7 @@ return {
     "rcarriga/nvim-notify",
     opts = {
       background_colour = "#000000"
-    }, 
+    },
   },
   {
     "folke/noice.nvim",
@@ -16,7 +16,12 @@ return {
       --   If not available, we use `mini` as the fallback
       "rcarriga/nvim-notify",
     },
-    config = true,
+    opts = {
+      lsp = {
+        hover = { enabled = false },
+        signature = { enabled = false },
+      },
+    },
   }
 }
 
