@@ -79,7 +79,7 @@ return {
       width = 40,
       position = "left",
       mappings = {
-        ["<space>"] = "none",   
+        ["<space>"] = "none",
         ["Y"] = "copy_selector",
         ["h"] = "parent_or_close",
         ["<left>"] = "parent_or_close",
@@ -104,6 +104,14 @@ return {
           ".ruff_cache",
           ".mypy_cache",
           "__pycache__",
+        },
+      },
+    },
+    default_component_configs = {
+      git_status = {
+        symbols = {
+          unstaged = "u",
+          staged = "s",
         },
       },
     },
