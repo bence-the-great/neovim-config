@@ -100,6 +100,10 @@ return {
         },
         never_show = {
           ".DS_Store",
+          ".pytest_cache",
+          ".ruff_cache",
+          ".mypy_cache",
+          "__pycache__",
         },
       },
     },
