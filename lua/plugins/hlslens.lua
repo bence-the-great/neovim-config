@@ -1,7 +1,7 @@
 return {
   "kevinhwang91/nvim-hlslens",
   keys = {
-    { "c", "*<cmd>noh<cr>", desc = "" },
+    { "<leader>c", "*<cmd>noh<cr>", desc = "" },
     { "*", "*<cmd>lua require('hlslens').start()<cr>", desc = "" },
     { "g*", "g*<cmd>lua require('hlslens').start()<cr>", desc = "" },
     { "#", "#<cmd>lua require('hlslens').start()<cr>", desc = "" },
