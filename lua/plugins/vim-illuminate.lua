@@ -8,7 +8,7 @@ return {
       providers = { "lsp", "treesitter", "regex" },
     },
   },
-  config = function(_, otps)
+  config = function(_, opts)
     require("illuminate").configure(opts)
   end,
 }

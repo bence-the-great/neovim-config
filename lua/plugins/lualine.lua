@@ -1,7 +1,7 @@
 return {
   'nvim-lualine/lualine.nvim',
   event = "VeryLazy",
-  requires = { 'nvim-tree/nvim-web-devicons', opt = true },
+  dependencies = { 'nvim-tree/nvim-web-devicons', config = true },
   opts = {
     options = {
       icons_enabled = true,
