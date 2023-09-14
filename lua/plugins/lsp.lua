@@ -15,12 +15,17 @@ return {
         require('lsp-zero.cmp').extend()
         local cmp = require('cmp')
         local cmp_action = require('lsp-zero.cmp').action()
+        local cmp_select_opts = {behavior = cmp.SelectBehavior.Select}
 
         cmp.setup({
           mapping = {
-            ['<C-Space>'] = cmp.mapping.complete(),
-            ['<C-f>'] = cmp_action.luasnip_jump_forward(),
-            ['<C-b>'] = cmp_action.luasnip_jump_backward(),
+            ['<cr>'] = cmp.mapping.confirm({select = true}),
+            ['<tab>'] = cmp.mapping.confirm({select = true}),
+            ['<esc>'] = cmp.mapping.abort(),
+            ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+            ['<C-d>'] = cmp.mapping.scroll_docs(4),
+            ['<Up>'] = cmp.mapping.select_prev_item(cmp_select_opts),
+            ['<Down>'] = cmp.mapping.select_next_item(cmp_select_opts),
           }
         })
       end,
@@ -35,7 +40,7 @@ return {
         { "hrsh7th/cmp-nvim-lsp" },
         {
           'williamboman/mason.nvim',
-          cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
+          cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog", "MasonUpdate" },
         },
         {
           "williamboman/mason-lspconfig.nvim",
