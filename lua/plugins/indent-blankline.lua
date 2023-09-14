@@ -13,6 +13,7 @@ return {
       "aerial",
       "lazy",
       "neo-tree",
+      "toggleterm",
     },
     context_patterns = {
       "class",
