@@ -4,7 +4,7 @@ return {
   build = ':TSUpdate',
   dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
   opts = {
-    ensure_installed = { "lua", "vim", "vimdoc", "query", "python", "go", "rust", "proto", "regex", "markdown" },
+    ensure_installed = { "lua", "vim", "vimdoc", "query", "python", "go", "gomod", "gosum", "gowork", "rust", "proto", "regex", "markdown", "toml", "hcl", "terraform", "yaml", "dockerfile", },
     sync_install = false,
     auto_install = true,
     ignore_install = { "javascript" },
