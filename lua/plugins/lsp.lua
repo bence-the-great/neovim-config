@@ -10,7 +10,13 @@ return {
     {
       'hrsh7th/nvim-cmp',
       event = 'InsertEnter',
-      dependencies = {'L3MON4D3/LuaSnip'},
+      dependencies = {
+        "L3MON4D3/LuaSnip",
+        dependencies = { "rafamadriz/friendly-snippets" },
+        config = function ()
+          require("luasnip.loaders.from_vscode").lazy_load()
+        end
+      },
       config = function()
         require('lsp-zero.cmp').extend()
         local cmp = require('cmp')
@@ -26,7 +32,12 @@ return {
             ['<C-d>'] = cmp.mapping.scroll_docs(4),
             ['<Up>'] = cmp.mapping.select_prev_item(cmp_select_opts),
             ['<Down>'] = cmp.mapping.select_next_item(cmp_select_opts),
-          }
+          },
+          snippet = {
+            expand = function (args)
+              require("luasnip").lsp_expand(args.body)
+            end
+          },
         })
       end,
     },
