@@ -1,6 +1,6 @@
 return {
   "levouh/tint.nvim",
   opts = {
-    tint = -65,
+    tint = -55,
   },
 }
