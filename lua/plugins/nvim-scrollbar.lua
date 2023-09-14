@@ -11,7 +11,7 @@ return {
       diagnostic = true,
       gitsigns = true,
       handle = true,
-      search = false, -- Requires hlslens
+      search = true, -- Requires hlslens
       ale = false, -- Requires ALE
     },
     excluded_filetypes = {
