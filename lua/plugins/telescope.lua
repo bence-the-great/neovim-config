@@ -1,3 +1,8 @@
+local function getSelectedText()
+  vim.cmd("noautocmd normal! \"vy\"")
+  return vim.fn.getreg("v")
+end
+
 return {
   "nvim-telescope/telescope.nvim",
   dependencies = { "nvim-lua/plenary.nvim" },
@@ -9,11 +14,18 @@ return {
     {
       "<leader>fl",
       function ()
-        vim.cmd("noautocmd normal! \"vy\"")
-        require("telescope.builtin").live_grep({default_text = vim.fn.getreg("v")})
+        require("telescope.builtin").live_grep({default_text = getSelectedText()})
       end,
       mode = "v",
       desc = "Live grep selection",
+    },
+    {
+      "<leader>fc",
+      function ()
+        require("telescope.builtin").current_buffer_fuzzy_find({default_text = getSelectedText()})
+      end,
+      mode = "v",
+      desc = "Find selection in current buffer",
     },
     { "<leader>fn", "<cmd>Telescope noice<cr>", desc = "Find notification" },
   },
