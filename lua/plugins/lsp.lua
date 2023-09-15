@@ -60,6 +60,7 @@ return {
       },
       config = function()
         local lsp = require('lsp-zero')
+        local lsp_config = require('lspconfig')
 
         lsp.on_attach(function(client, bufnr)
           -- see :help lsp-zero-keybindings
@@ -67,7 +68,8 @@ return {
           lsp.default_keymaps({buffer = bufnr})
         end)
 
-        require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+        lsp_config.lua_ls.setup(lsp.nvim_lua_ls())
+        lsp_config.pyright.setup(lsp.nvim_lua_ls())
         lsp.setup()
       end,
     },
