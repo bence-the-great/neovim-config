@@ -30,7 +30,9 @@ return {
     { "<leader>fn", "<cmd>Telescope noice<cr>", desc = "Find notification" },
   },
   config = function (_, opts)
-    require("telescope").load_extension("noice")
+    local telescope = require("telescope")
+    telescope.setup(opts)
+    telescope.load_extension("noice")
   end,
 }
 
