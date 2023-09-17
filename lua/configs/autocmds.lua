@@ -1,4 +1,5 @@
-vim.api.nvim_create_augroup('git', {})
+vim.api.nvim_create_augroup("user_commands", {clear = true})
+vim.api.nvim_create_augroup("git", {})
 
 vim.api.nvim_create_autocmd("BufEnter", {
   pattern = "*COMMIT_EDITMSG",
@@ -6,5 +7,14 @@ vim.api.nvim_create_autocmd("BufEnter", {
     vim.api.nvim_set_option_value("colorcolumn", "50,80", {})
   end,
   group = "git",
+})
+
+
+vim.api.nvim_create_autocmd("TextYankPost", {
+  desc = "Highlight on yank",
+  group = "user_commands",
+  callback = function()
+    vim.highlight.on_yank({higroup = "Visual", timeout = 200})
+  end,
 })
 
