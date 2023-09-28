@@ -11,6 +11,7 @@ return {
     { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find files" },
     { "<leader>fg", "<cmd>Telescope git_files<cr>", desc = "Find files in git" },
     { "<leader>fl", "<cmd>Telescope live_grep<cr>", desc = "Live grep" },
+    { "<leader>fp", "<cmd>Telescope projects<cr>", desc = "Search projects" },
     {
       "<leader>fl",
       function ()
@@ -33,6 +34,7 @@ return {
     local telescope = require("telescope")
     telescope.setup(opts)
     telescope.load_extension("noice")
+    telescope.load_extension("projects")
   end,
 }
 
