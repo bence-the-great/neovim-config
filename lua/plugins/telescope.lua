@@ -29,6 +29,7 @@ return {
       desc = "Find selection in current buffer",
     },
     { "<leader>fn", "<cmd>Telescope noice<cr>", desc = "Find notification" },
+    { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Find buffer" },
   },
   config = function (_, opts)
     local telescope = require("telescope")
