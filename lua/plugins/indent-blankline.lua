@@ -14,6 +14,7 @@ return {
         "lazy",
         "neo-tree",
         "toggleterm",
+        "dashboard",
       },
     },
   },
