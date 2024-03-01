@@ -47,6 +47,10 @@ return {
       "neovim/nvim-lspconfig",
       cmd = "LspInfo",
       event = { "BufReadPre", "BufNewFile" },
+      keys = {
+        { "gd", vim.lsp.buf.definition, desc = "Goto Definition" },
+        { "gr", vim.lsp.buf.references, desc = "Goto References" },
+      },
       dependencies = {
         { "hrsh7th/cmp-nvim-lsp" },
         {
