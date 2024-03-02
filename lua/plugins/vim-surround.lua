@@ -9,8 +9,6 @@ return {
     "yss",
     "ySs",
     "ySS",
-    {"S", mode = "x"},
-    {"gS", mode = "x"},
   },
 }
 
