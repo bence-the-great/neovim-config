@@ -21,5 +21,12 @@ return {
       dap_enabled = true, -- makes the debugger work with venv
     },
   },
+  {
+    "wookayin/semshi",
+    build = ":UpdateRemotePlugins",
+    init = function()  -- example, skip if you're OK with the default config
+     vim.g['semshi#error_sign'] = false
+   end,
+  },
 }
 
