@@ -13,7 +13,7 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 
 -- Enable mouse mode
-vim.o.mouse = true
+vim.o.mouse = "nv"
 
 -- Save undo history
 vim.o.undofile = true
