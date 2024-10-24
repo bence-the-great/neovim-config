@@ -74,6 +74,8 @@ return {
 
         lsp_config.lua_ls.setup(lsp.nvim_lua_ls())
         lsp_config.basedpyright.setup(lsp.nvim_lua_ls())
+        lsp_config.gopls.setup(lsp.nvim_lua_ls())
+
         lsp.setup()
       end,
     },
