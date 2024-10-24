@@ -14,7 +14,6 @@ return {
     ft = "python",
     keys = {
       { "<leader>vs", "<cmd>:VenvSelect<cr>" },
-      { "<leader>vc", "<cmd>:VenvSelectCached<cr>" },
     },
     opts = {
       parents = 1,
