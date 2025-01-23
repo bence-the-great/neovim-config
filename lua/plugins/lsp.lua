@@ -50,6 +50,7 @@ return {
       keys = {
         { "gd", vim.lsp.buf.definition, desc = "Goto Definition" },
         { "gr", vim.lsp.buf.references, desc = "Goto References" },
+        { "<leader>sd", function () vim.diagnostic.open_float(0, {scope="line"}) end, desc = "Show diagnostic message" },
       },
       dependencies = {
         { "hrsh7th/cmp-nvim-lsp" },
