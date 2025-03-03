@@ -5,6 +5,9 @@
 # Install a nerd font (and set it in the terminal emulator)
 brew install --cask font-jetbrains-mono-nerd-font
 
+# Install ripgrep for telescope
+brew install ripgrep
+
 # Install pynvim for semshi
 pip install -U pynvim
 
