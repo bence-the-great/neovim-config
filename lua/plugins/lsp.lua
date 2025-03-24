@@ -74,9 +74,39 @@ return {
         end)
 
         lsp_config.lua_ls.setup(lsp.nvim_lua_ls())
-        lsp_config.basedpyright.setup(lsp.nvim_lua_ls())
-        lsp_config.gopls.setup(lsp.nvim_lua_ls())
-        lsp_config.protols.setup(lsp.nvim_lua_ls())
+        lsp_config.basedpyright.setup({
+          settings = {
+            basedpyright = {
+              analysis = {
+                diagnosticSeverityOverrides = {
+                  reportMissingTypeStubs = false,
+                  reportUnusedCallResult = false,
+                  reportMissingTypeArgument = false,
+                  reportMissingParameterType = false,
+                  reportUnknownArgumentType = false,
+                  reportUnknownLambdaType = false,
+                  reportUnknownMemberType = false,
+                  reportUnknownParameterType = false,
+                  reportUnknownVariableType = false,
+                  reportUnannotatedClassAttribute = false,
+                  reportAny = false,
+                }
+              }
+            }
+          }
+        })
+        lsp_config.gopls.setup({})
+        lsp_config.protols.setup({})
+        lsp_config.yamlls.setup({})
+        lsp_config.helm_ls.setup({
+          settings = {
+            ['helm-ls'] = {
+              yamlls = {
+                path = "yaml-language-server",
+              }
+            }
+          }
+        })
 
         lsp.setup()
       end,
