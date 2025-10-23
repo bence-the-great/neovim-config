@@ -1,116 +1,77 @@
 return {
-  'VonHeikemen/lsp-zero.nvim',
-  branch = 'v2.x',
-  lazy = true,
-  config = function()
-    require('lsp-zero.settings').preset({})
-  end,
-  dependencies = {
-    -- Autocompletion
-    {
-      'hrsh7th/nvim-cmp',
-      event = 'InsertEnter',
-      dependencies = {
-        "L3MON4D3/LuaSnip",
-        dependencies = { "rafamadriz/friendly-snippets" },
-        config = function ()
-          require("luasnip.loaders.from_vscode").lazy_load()
-        end
+  {
+    "neovim/nvim-lspconfig",
+    dependencies = {
+      {
+        "williamboman/mason-lspconfig.nvim",
+        opts = {},
+        dependencies = {"mason-org/mason.nvim", opts = {}},
       },
-      config = function()
-        require('lsp-zero.cmp').extend()
-        local cmp = require('cmp')
-        local cmp_action = require('lsp-zero.cmp').action()
-        local cmp_select_opts = {behavior = cmp.SelectBehavior.Select}
-
-        cmp.setup({
-          mapping = {
-            ['<cr>'] = cmp.mapping.confirm({select = true}),
-            ['<tab>'] = cmp.mapping.confirm({select = true}),
-            ['<esc>'] = cmp.mapping.abort(),
-            ['<C-u>'] = cmp.mapping.scroll_docs(-4),
-            ['<C-d>'] = cmp.mapping.scroll_docs(4),
-            ['<Up>'] = cmp.mapping.select_prev_item(cmp_select_opts),
-            ['<Down>'] = cmp.mapping.select_next_item(cmp_select_opts),
-          },
-          snippet = {
-            expand = function (args)
-              require("luasnip").lsp_expand(args.body)
-            end
-          },
-        })
-      end,
     },
+    config = function()
+      vim.api.nvim_create_autocmd('LspAttach', {
+        desc = 'LSP actions',
+        callback = function(event)
+          local telescope_builtin = require("telescope.builtin")
 
-    -- LSP Support
-    {
-      "neovim/nvim-lspconfig",
-      cmd = "LspInfo",
-      event = { "BufReadPre", "BufNewFile" },
-      keys = {
-        { "gd", vim.lsp.buf.definition, desc = "Goto Definition" },
-        { "gr", function() require('telescope.builtin').lsp_references() end, desc = "Goto References" },
-        { "<leader>sd", function () vim.diagnostic.open_float(0, {scope="line"}) end, desc = "Show diagnostic message" },
-      },
-      dependencies = {
-        { "hrsh7th/cmp-nvim-lsp" },
-        {
-          'williamboman/mason.nvim',
-          cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog", "MasonUpdate" },
-        },
-        {
-          "williamboman/mason-lspconfig.nvim",
-          cmd = { "LspInstall", "LspUninstall" },
-        },
-      },
-      config = function()
-        local lsp = require('lsp-zero')
-        local lsp_config = require('lspconfig')
+          vim.keymap.set("n", "grr", function() telescope_builtin.lsp_references() end, {desc = "👈 References", buffer = event.buf})
+          vim.keymap.set("n", "grd", function() telescope_builtin.lsp_definitions() end, {desc = "📚 Definitions", buffer = event.buf})
+          vim.keymap.set("n", "gri", function() telescope_builtin.lsp_implementations() end, {desc = "👷 Implementations", buffer = event.buf})
+          vim.keymap.set("n", "<leader>sh", vim.lsp.buf.signature_help, {desc = "🙋‍♂️ Signature help", buffer = event.buf})
+          vim.keymap.set("n", "<leader>sd", function() vim.diagnostic.open_float(0, { scope = "line" }) end, {desc = "🩺 Line diagnostics", buffer = event.buf})
+          vim.keymap.set("n", "gO", function() telescope_builtin.lsp_document_symbols() end, {desc = "󰍉 Document symbols", buffer = event.buf})
+          vim.keymap.set("n", "gW", function() telescope_builtin.lsp_dynamic_workspace_symbols() end, {desc = "📺 Workspace symbols", buffer = event.buf})
+        end,
+      })
 
-        lsp.on_attach(function(client, bufnr)
-          -- see :help lsp-zero-keybindings
-          -- to learn the available actions
-          lsp.default_keymaps({buffer = bufnr})
-        end)
-
-        lsp_config.lua_ls.setup(lsp.nvim_lua_ls())
-        lsp_config.basedpyright.setup({
-          settings = {
-            basedpyright = {
-              analysis = {
-                diagnosticSeverityOverrides = {
-                  reportMissingTypeStubs = false,
-                  reportUnusedCallResult = false,
-                  reportMissingTypeArgument = false,
-                  reportMissingParameterType = false,
-                  reportUnknownArgumentType = false,
-                  reportUnknownLambdaType = false,
-                  reportUnknownMemberType = false,
-                  reportUnknownParameterType = false,
-                  reportUnknownVariableType = false,
-                  reportUnannotatedClassAttribute = false,
-                  reportAny = false,
-                }
+      vim.lsp.config.basedpyright = {
+        settings = {
+          basedpyright = {
+            analysis = {
+              diagnosticSeverityOverrides = {
+                reportMissingTypeStubs = false,
+                reportUnusedCallResult = false,
+                reportMissingTypeArgument = false,
+                reportMissingParameterType = false,
+                reportUnknownArgumentType = false,
+                reportUnknownLambdaType = false,
+                reportUnknownMemberType = false,
+                reportUnknownParameterType = false,
+                reportUnknownVariableType = false,
+                reportUnannotatedClassAttribute = false,
+                reportAny = false,
               }
             }
           }
-        })
-        lsp_config.gopls.setup({})
-        lsp_config.protols.setup({})
-        lsp_config.yamlls.setup({})
-        lsp_config.helm_ls.setup({
-          settings = {
-            ['helm-ls'] = {
-              yamlls = {
-                path = "yaml-language-server",
-              }
-            }
-          }
-        })
-
-        lsp.setup()
-      end,
+        }
+      }
+    end,
+  },
+  {
+    "hrsh7th/nvim-cmp",
+    event = "InsertEnter",
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
     },
+    config = function()
+      local cmp = require("cmp")
+      local cmp_select_opts = { behavior = cmp.SelectBehavior.Select }
+
+      cmp.setup({
+        sources = {
+          { name = "nvim_lsp" },
+        },
+        mapping = {
+          ["<cr>"] = cmp.mapping.confirm({ select = true }),
+          ["<tab>"] = cmp.mapping.confirm({ select = true }),
+          ["<esc>"] = cmp.mapping.abort(),
+          ["<C-u>"] = cmp.mapping.scroll_docs(-4),
+          ["<C-d>"] = cmp.mapping.scroll_docs(4),
+          ["<Up>"] = cmp.mapping.select_prev_item(cmp_select_opts),
+          ["<Down>"] = cmp.mapping.select_next_item(cmp_select_opts),
+        },
+      })
+    end,
   },
 }
 
