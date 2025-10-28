@@ -23,7 +23,7 @@ return {
   {
     "wookayin/semshi",
     build = ":UpdateRemotePlugins",
-    init = function()  -- example, skip if you're OK with the default config
+    init = function()
      vim.g['semshi#error_sign'] = false
    end,
   },
