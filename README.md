@@ -1,17 +1,13 @@
-# Neovim config
+# 💻 Neovim config
 
-## Install
 ```shell
-# Install a nerd font (and set it in the terminal emulator)
+# 👾 Install a nerd font (and set it in the terminal emulator) 
 brew install --cask font-jetbrains-mono-nerd-font
 
-# Install ripgrep for telescope
+# 🔭 Install ripgrep for telescope 
 brew install ripgrep
 
-# Install pynvim for semshi
-pip install -U pynvim
-
-# Install Node for github copilot
+# 📦 Install Node for github copilot
 brew install node
 
 rm -r .config/nvim/
