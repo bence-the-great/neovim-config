@@ -1,7 +1,11 @@
-return {
-  "lewis6991/gitsigns.nvim",
-  event = { "BufReadPre", "BufNewFile" },
-  opts = {
+vim.pack.add(
+  {
+    "https://github.com/lewis6991/gitsigns.nvim",
+  }
+)
+
+require("gitsigns").setup(
+  {
     signs = {
       add          = { text = '│' },
       change       = { text = '│' },
@@ -25,5 +29,6 @@ return {
       map('n', '<leader>hp', gs.preview_hunk)
       map('n', '<leader>hr', gs.reset_hunk)
     end
-  },
-}
+  }
+)
+

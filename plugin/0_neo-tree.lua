@@ -1,17 +1,14 @@
-return {
-  "nvim-neo-tree/neo-tree.nvim",
-  branch = "v3.x",
-  event = "BufEnter",
-  cmd = "Neotree",
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-    "nvim-tree/nvim-web-devicons",
-    "MunifTanjim/nui.nvim",
-  },
-  keys = {
-    { "<leader>e", "<cmd>Neotree toggle<cr>", desc = "Toggle Neotree" },
-  },
-  opts = {
+vim.pack.add(
+  {
+    "https://github.com/nvim-lua/plenary.nvim",
+    "https://github.com/nvim-tree/nvim-web-devicons",
+    "https://github.com/MunifTanjim/nui.nvim",
+    "https://github.com/nvim-neo-tree/neo-tree.nvim",
+  }
+)
+
+require("neo-tree").setup(
+  {
     auto_clean_after_session_restore = true,
     sources = { "filesystem", "buffers", "git_status" },
     commands = {
@@ -117,6 +114,7 @@ return {
         },
       },
     },
-  },
-}
+  }
+)
 
+vim.keymap.set("n", "<leader>e", "<cmd>Neotree toggle<cr>")

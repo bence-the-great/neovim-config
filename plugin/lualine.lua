@@ -1,8 +1,12 @@
-return {
-  'nvim-lualine/lualine.nvim',
-  event = "VeryLazy",
-  dependencies = { 'nvim-tree/nvim-web-devicons', config = true },
-  opts = {
+vim.pack.add(
+  {
+    "https://github.com/nvim-tree/nvim-web-devicons",
+    "https://github.com/nvim-lualine/lualine.nvim",
+  }
+)
+
+require('lualine').setup(
+  {
     options = {
       icons_enabled = true,
       theme = 'auto',
@@ -38,9 +42,5 @@ return {
     winbar = {},
     inactive_winbar = {},
     extensions = { 'neo-tree', 'lazy', 'aerial' }
-  },
-}
-
-
-
-
+  }
+)

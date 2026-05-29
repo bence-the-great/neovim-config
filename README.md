@@ -7,8 +7,13 @@ brew install --cask font-jetbrains-mono-nerd-font
 # 🔭 Install ripgrep for telescope 
 brew install ripgrep
 
-# 📦 Install Node for github copilot
-brew install node
+# 📦 Install LSPs
+brew install --cask copilot-language-server
+brew install hashicorp/tap/terraform-ls
+brew install helm-ls
+brew install ty
+brew install basedpyright
+brew install lua-language-server
 
 rm -r .config/nvim/
 rm -r ~/.local/share/nvim
