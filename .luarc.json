@@ -7,7 +7,7 @@
   "diagnostics.globals": ["vim"],
   "workspace.checkThirdParty": false,
   "workspace.library": [
-    "/usr/local/Cellar/neovim/0.9.2/share/nvim/runtime",
+    "/opt/homebrew/Cellar/neovim/0.12.2/share/nvim/runtime",
     "./lua"
   ]
 }
